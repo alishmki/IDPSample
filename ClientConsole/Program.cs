@@ -18,16 +18,17 @@ namespace ClientConsole
             {
                 Console.WriteLine(disco.Error);
                 return;
-            }
+            }         
 
+            
 
             //request token
-            var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest() 
-            { 
+            var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest()
+            {
                 Address = disco.TokenEndpoint,
                 ClientId = "client",
-                ClientSecret = "secret001",
-                //Scope = "api1"
+                ClientSecret = "secret",
+                Scope = "api1"
             });
             if (tokenResponse.IsError)
             {
@@ -39,7 +40,7 @@ namespace ClientConsole
 
             //call api
             await CallApi(tokenResponse, "http://localhost:5001/identity");
-        
+
 
 
             while (true)
@@ -66,11 +67,11 @@ namespace ClientConsole
                         break;
                 }
             }
-       
+
         }
 
 
-        private static async Task CallApi(TokenResponse token,string url)
+        private static async Task CallApi(TokenResponse token, string url)
         {
             var client = new HttpClient();
             client.SetBearerToken(token.AccessToken);
@@ -85,5 +86,9 @@ namespace ClientConsole
                 Console.WriteLine(JArray.Parse(content));
             }
         }
+
+       
+
+
     }
 }

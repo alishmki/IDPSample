@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -12,6 +14,10 @@ namespace ClientMVC
 {
     public class Startup
     {
+        public Startup()
+        {
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+        }
         public void ConfigureServices(IServiceCollection services)
         {
 
@@ -22,7 +28,7 @@ namespace ClientMVC
                 options.DefaultChallengeScheme = "oidc";
             })
                 .AddCookie("Cookies")
-                .AddOpenIdConnect("oidc", options => 
+                .AddOpenIdConnect("oidc", options =>
                 {
                     options.Authority = "http://localhost:5000";
                     options.RequireHttpsMetadata = false;
@@ -31,9 +37,21 @@ namespace ClientMVC
                     options.ClientSecret = "secret";
                     options.ResponseType = "code";
 
-                    options.SaveTokens = true;
-                });
+                    options.ClaimActions.Remove("amr");
+                    options.ClaimActions.DeleteClaim("sid");
+                    options.ClaimActions.DeleteClaim("idp");
 
+                    options.Scope.Add("openid");
+                    options.Scope.Add("profile");
+                    options.Scope.Add("country");
+                    
+                    options.ClaimActions.MapUniqueJsonKey(claimType: "country", jsonKey: "country");
+                 
+                    //options.ClaimActions.DeleteClaim("country");
+
+                    options.SaveTokens = true;
+                    options.GetClaimsFromUserInfoEndpoint = true;
+                });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

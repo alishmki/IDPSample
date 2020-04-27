@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace IdentityServerAspNetIdentity
 {
@@ -49,7 +50,7 @@ namespace IdentityServerAspNetIdentity
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-            
+
             var builder = services.AddIdentityServer(options =>
                 {
                     options.Events.RaiseErrorEvents = true;
@@ -64,6 +65,12 @@ namespace IdentityServerAspNetIdentity
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
+
+            services.AddAuthentication("MyCookie")
+            .AddCookie("MyCookie", options =>
+            {
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(1);
+            });
 
             services.AddAuthentication()
                 .AddGoogle(options =>

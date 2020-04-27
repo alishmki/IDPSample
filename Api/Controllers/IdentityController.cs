@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,9 @@ namespace Api.Controllers
         [Route("identity")]
         public IActionResult Get()
         {
+            var claimsIdentity = HttpContext.User.Identity as ClaimsIdentity;
+            var roles = claimsIdentity.Claims.ToList();           
+            
             return new JsonResult(from c in User.Claims select new { c.Type, c.Value });
         }
 

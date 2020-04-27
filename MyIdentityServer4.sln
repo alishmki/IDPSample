@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyIdentityServer4", "MyIdentityServer4\MyIdentityServer4.csproj", "{889453A0-D009-4EE5-A8CE-F93860B04A5C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{D29E2718-C251-40E4-92B3-1FA5E42F6368}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. IDP", "01. IDP", "{93B9C784-5B3A-42A4-92F5-FB9FC1854713}"
@@ -27,10 +25,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{889453A0-D009-4EE5-A8CE-F93860B04A5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{889453A0-D009-4EE5-A8CE-F93860B04A5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{889453A0-D009-4EE5-A8CE-F93860B04A5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{889453A0-D009-4EE5-A8CE-F93860B04A5C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D29E2718-C251-40E4-92B3-1FA5E42F6368}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D29E2718-C251-40E4-92B3-1FA5E42F6368}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D29E2718-C251-40E4-92B3-1FA5E42F6368}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -56,7 +50,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{889453A0-D009-4EE5-A8CE-F93860B04A5C} = {93B9C784-5B3A-42A4-92F5-FB9FC1854713}
 		{D29E2718-C251-40E4-92B3-1FA5E42F6368} = {D0E3E91A-FC1D-49A2-AA19-EADB08F70962}
 		{1F74AF22-711A-45F2-9877-5B6E164A096B} = {57DD684E-56F2-407F-856E-CEED97B6AA99}
 		{5F832550-1302-4209-BF8C-A0791C732009} = {57DD684E-56F2-407F-856E-CEED97B6AA99}

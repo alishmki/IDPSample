@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using IdentityModel;
 using IdentityServer4;
 using IdentityServer4.Models;
 using System.Collections.Generic;
@@ -15,13 +16,50 @@ namespace IdentityServerAspNetIdentity
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
-            };
 
+
+                new IdentityResource(
+                    name: "country",
+                    displayName: "The country you're living in",
+                    claimTypes: new List<string> { "country" }),
+
+                new IdentityResource(
+                    name:"customprofile",
+                    displayName:"Custom Profile",
+                    claimTypes:new string[]{ "name","family" })
+            };
 
         public static IEnumerable<ApiResource> Apis =>
             new List<ApiResource>
             {
-                new ApiResource("api1", "My API")
+                 // simple API with a single scope (in this case the scope name is the same as the api name)
+                // new ApiResource("api1","api1des")
+                new ApiResource()
+                {
+                    Name="api1",
+                    Description="des",
+                    UserClaims=new List<string>{"country" },
+                    DisplayName="displaname",
+                   Scopes=
+                   {
+                       new Scope()
+                       {
+                           Name="api1",
+                           DisplayName="api1",
+
+                       },
+                        new Scope()
+                       {
+                           Name="api1.country",
+                           DisplayName="countryyy",
+
+                       }
+                   }
+                }
+
+
+
+
             };
 
         public static IEnumerable<Client> Clients =>
@@ -57,10 +95,10 @@ namespace IdentityServerAspNetIdentity
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        "api1"
+                        "country"
                     },
 
-                    AllowOfflineAccess = true
+                    UpdateAccessTokenClaimsOnRefresh = true
                 },
                 // JavaScript Client
                 new Client
@@ -70,6 +108,7 @@ namespace IdentityServerAspNetIdentity
                     AllowedGrantTypes = GrantTypes.Code,
                     RequirePkce = true,
                     RequireClientSecret = false,
+                    RequireConsent=false,
 
                     RedirectUris =           { "http://localhost:5003/callback.html" },
                     PostLogoutRedirectUris = { "http://localhost:5003/index.html" },
@@ -79,6 +118,7 @@ namespace IdentityServerAspNetIdentity
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
+                        "country",
                         "api1"
                     }
                 }
