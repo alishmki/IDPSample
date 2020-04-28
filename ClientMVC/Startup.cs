@@ -44,7 +44,8 @@ namespace ClientMVC
                     options.Scope.Add("openid");
                     options.Scope.Add("profile");
                     options.Scope.Add("country");
-                    
+                    //options.Scope.Add("offline_access");
+
                     options.ClaimActions.MapUniqueJsonKey(claimType: "country", jsonKey: "country");
                  
                     //options.ClaimActions.DeleteClaim("country");

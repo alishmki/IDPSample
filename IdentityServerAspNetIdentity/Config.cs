@@ -98,7 +98,14 @@ namespace IdentityServerAspNetIdentity
                         "country"
                     },
 
-                    UpdateAccessTokenClaimsOnRefresh = true
+
+
+                    UpdateAccessTokenClaimsOnRefresh = true,
+
+
+
+
+
                 },
                 // JavaScript Client
                 new Client
@@ -120,7 +127,13 @@ namespace IdentityServerAspNetIdentity
                         IdentityServerConstants.StandardScopes.Profile,
                         "country",
                         "api1"
-                    }
+                    },
+
+                    AllowOfflineAccess = true,
+
+                    IdentityTokenLifetime = 30,// ... // defaults to 300 seconds / 5 minutes
+                    AuthorizationCodeLifetime = 30,// ... // defaults to 300 seconds / 5 minutes
+                    AccessTokenLifetime = 60, // defaults to 3600 seconds / 1 hour
                 }
             };
     }

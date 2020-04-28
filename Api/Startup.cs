@@ -20,31 +20,30 @@ namespace Api
         {
             services.AddControllers();
 
-            //services.AddAuthentication("Bearer")
-            //.AddJwtBearer("Bearer", options =>
-            //{
-            //    options.Authority = "http://localhost:5000";
-            //    options.RequireHttpsMetadata = false;
-            //    options.Audience = "api1";
-            //    options.SaveToken = true;
-            //    options.tokenva
-            //});
+
+
+            services.AddAuthentication("Bearer")
+            .AddJwtBearer("Bearer", options =>
+            {
+                options.Authority = "http://localhost:5000";
+                options.RequireHttpsMetadata = false;
+                options.Audience = "api1";
+                options.SaveToken = true; 
+             
+            });
+
+
+
 
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
              .AddIdentityServerAuthentication(options =>
              {
                  // base-address of your identityserver
                  options.Authority = "http://localhost:5000";
-
                  options.RequireHttpsMetadata = false;
-
-
-
                  // name of the API resource
                  options.ApiName = "api1";
-
-
-                // options.ApiSecret = "xxx";
+                 // options.ApiSecret = "xxx";
              });
 
 
