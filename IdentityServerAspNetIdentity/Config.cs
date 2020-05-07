@@ -40,6 +40,7 @@ namespace IdentityServerAspNetIdentity
                     Description="des",
                     UserClaims=new List<string>{"country" },
                     DisplayName="displaname",
+                    ApiSecrets = { new Secret("apisecret".Sha256()) },
                    Scopes=
                    {
                        new Scope()
@@ -55,6 +56,7 @@ namespace IdentityServerAspNetIdentity
 
                        }
                    }
+
                 }
 
 
@@ -65,6 +67,20 @@ namespace IdentityServerAspNetIdentity
         public static IEnumerable<Client> Clients =>
             new List<Client>
             {
+                new Client
+                {
+                    ClientId = "ro.client",
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+
+                    ClientSecrets =
+                    {
+                        new Secret("secret".Sha256())
+                    },
+                    AllowedScopes = { "api1" }
+                },
+
+
+
                 // machine to machine client
                 new Client
                 {
@@ -98,10 +114,12 @@ namespace IdentityServerAspNetIdentity
                         "country"
                     },
 
+                    IdentityTokenLifetime = 30,// ... // defaults to 300 seconds / 5 minutes
+                    AuthorizationCodeLifetime = 30,// ... // defaults to 300 seconds / 5 minutes
+                    AccessTokenLifetime = 60, // defaults to 3600 seconds / 1 hour
 
-
-                    UpdateAccessTokenClaimsOnRefresh = true,
-
+                    //UpdateAccessTokenClaimsOnRefresh = true,
+                    //AllowOfflineAccess=true
 
 
 
@@ -117,6 +135,8 @@ namespace IdentityServerAspNetIdentity
                     RequireClientSecret = false,
                     RequireConsent=false,
 
+                    ClientSecrets= { new Secret("apisecret".Sha256()) },
+
                     RedirectUris =           { "http://localhost:5003/callback.html" },
                     PostLogoutRedirectUris = { "http://localhost:5003/index.html" },
                     AllowedCorsOrigins =     { "http://localhost:5003" },
@@ -129,11 +149,8 @@ namespace IdentityServerAspNetIdentity
                         "api1"
                     },
 
-                    AllowOfflineAccess = true,
+                     AccessTokenType=AccessTokenType.Reference
 
-                    IdentityTokenLifetime = 30,// ... // defaults to 300 seconds / 5 minutes
-                    AuthorizationCodeLifetime = 30,// ... // defaults to 300 seconds / 5 minutes
-                    AccessTokenLifetime = 60, // defaults to 3600 seconds / 1 hour
                 }
             };
     }

@@ -22,15 +22,16 @@ namespace Api
 
 
 
-            services.AddAuthentication("Bearer")
-            .AddJwtBearer("Bearer", options =>
-            {
-                options.Authority = "http://localhost:5000";
-                options.RequireHttpsMetadata = false;
-                options.Audience = "api1";
-                options.SaveToken = true; 
-             
-            });
+            //services.AddAuthentication("Bearer")
+            //.AddJwtBearer("Bearer", options =>
+            //{
+            //    options.Authority = "http://localhost:5000";
+            //    options.RequireHttpsMetadata = false;
+            //    options.Audience = "api1";
+            //    //options.SaveToken = true; 
+
+            //});
+
 
 
 
@@ -43,7 +44,11 @@ namespace Api
                  options.RequireHttpsMetadata = false;
                  // name of the API resource
                  options.ApiName = "api1";
-                 // options.ApiSecret = "xxx";
+
+                  options.ApiSecret = "apisecret";
+
+                 options.EnableCaching = false;
+                 options.CacheDuration = TimeSpan.FromMinutes(10); // that's the default
              });
 
 

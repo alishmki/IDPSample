@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientJavascript", "ClientJ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServerAspNetIdentity", "IdentityServerAspNetIdentity\IdentityServerAspNetIdentity.csproj", "{1E0164C5-FBA4-43E4-857A-1D895ACB484D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTemp", "ConsoleTemp\ConsoleTemp.csproj", "{B47986FF-1A7F-4C06-83D3-AF87C501D75C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleTemp", "ConsoleTemp\ConsoleTemp.csproj", "{B47986FF-1A7F-4C06-83D3-AF87C501D75C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceOwnerPasswordConsole", "ResourceOwnerPasswordConsole\ResourceOwnerPasswordConsole.csproj", "{BBE50B02-DA19-4F10-A9DA-8AF5A9B3D756}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{B47986FF-1A7F-4C06-83D3-AF87C501D75C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B47986FF-1A7F-4C06-83D3-AF87C501D75C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B47986FF-1A7F-4C06-83D3-AF87C501D75C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBE50B02-DA19-4F10-A9DA-8AF5A9B3D756}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBE50B02-DA19-4F10-A9DA-8AF5A9B3D756}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBE50B02-DA19-4F10-A9DA-8AF5A9B3D756}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBE50B02-DA19-4F10-A9DA-8AF5A9B3D756}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{B537A6B6-3066-475B-B711-9CC369BD38C5} = {57DD684E-56F2-407F-856E-CEED97B6AA99}
 		{1E0164C5-FBA4-43E4-857A-1D895ACB484D} = {93B9C784-5B3A-42A4-92F5-FB9FC1854713}
 		{B47986FF-1A7F-4C06-83D3-AF87C501D75C} = {57DD684E-56F2-407F-856E-CEED97B6AA99}
+		{BBE50B02-DA19-4F10-A9DA-8AF5A9B3D756} = {57DD684E-56F2-407F-856E-CEED97B6AA99}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8F8A2EB3-BBAB-4F28-8811-59E770B3E052}

@@ -31,18 +31,18 @@ namespace IdentityServerAspNetIdentity
             services.AddControllersWithViews();
 
             // configures IIS out-of-proc settings (see https://github.com/aspnet/AspNetCore/issues/14882)
-            services.Configure<IISOptions>(iis =>
-            {
-                iis.AuthenticationDisplayName = "Windows";
-                iis.AutomaticAuthentication = false;
-            });
+            //services.Configure<IISOptions>(iis =>
+            //{
+            //    iis.AuthenticationDisplayName = "Windows";
+            //    iis.AutomaticAuthentication = false;
+            //});
 
-            // configures IIS in-proc settings
-            services.Configure<IISServerOptions>(iis =>
-            {
-                iis.AuthenticationDisplayName = "Windows";
-                iis.AutomaticAuthentication = false;
-            });
+            //// configures IIS in-proc settings
+            //services.Configure<IISServerOptions>(iis =>
+            //{
+            //    iis.AuthenticationDisplayName = "Windows";
+            //    iis.AutomaticAuthentication = false;
+            //});
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -58,6 +58,7 @@ namespace IdentityServerAspNetIdentity
                     options.Events.RaiseFailureEvents = true;
                     options.Events.RaiseSuccessEvents = true;
                 })
+             
                 .AddInMemoryIdentityResources(Config.Ids)
                 .AddInMemoryApiResources(Config.Apis)
                 .AddInMemoryClients(Config.Clients)

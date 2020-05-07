@@ -20,7 +20,7 @@ namespace ClientConsole
                 return;
             }         
 
-            
+         
 
             //request token
             var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest()
